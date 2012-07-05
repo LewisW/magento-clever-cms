@@ -168,11 +168,11 @@ class JR_CleverCms_Block_Catalog_Navigation extends Mage_Catalog_Block_Navigatio
      * @param string If specified wraps children list in div with this class
      * @return string
      */
-    public function renderCmsMenuHtml($level = 0, $isLast = true, $isFirst = true, $outermostItemClass = '', $childrenWrapClass = '')
+    public function renderCmsMenuHtml($level = 0, $isLast = true, $isFirst = true, $outermostItemClass = '', $childrenWrapClass = '', $showAll = false)
     {
         $activePages = array();
         foreach ($this->getStoreCmsPages() as $child) {
-            if ($child->getIsActive() && $child->getIncludeInMenu()) {
+            if ($child->getIsActive() && ($showAll || $child->getIncludeInMenu())) {
                 $activePages[] = $child;
             }
         }
