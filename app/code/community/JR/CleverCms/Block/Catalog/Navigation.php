@@ -123,13 +123,16 @@ class JR_CleverCms_Block_Catalog_Navigation extends Mage_Catalog_Block_Navigatio
         $html[] .= '<span>'. $this->escapeHtml($page->getTitle()) .'</span>';
         $html[] .= '</a>';
 
+    	// increment the level
+    	$level++;
+
         // render children
         $htmlChildren = '';
         $j = 0;
         foreach ($activeChildren as $child) {
             $htmlChildren .= $this->_renderCmsMenuItemHtml(
                 $child,
-                ($level + 1),
+                $level,
                 ($j == $activeChildrenCount - 1),  // is last
                 ($j == 0),                         // is first
                 false,                             // is outermost
